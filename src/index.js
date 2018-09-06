@@ -4,12 +4,42 @@ import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
-import tasks from "./reducers";
+import taskReducer from "./reducers/taskReducer";
 import { Provider } from "react-redux";
+import { uniqueId } from "./actions";
 
 console.log("index.js - Redux Store");
 
-const store = createStore(tasks);
+const initialState = {
+  tasks: [
+    {
+      id: uniqueId(),
+      title: "Learn Redux",
+      description: "The store, action and reducers",
+      status: "In Progress"
+    },
+    {
+      id: uniqueId(),
+      title: "Peace on Earth",
+      description: "No big deal",
+      status: "Unstarted"
+    },
+    {
+      id: uniqueId(),
+      title: "Redux in Action",
+      description: "The best Redux book",
+      status: "Completed"
+    },
+    {
+      id: uniqueId(),
+      title: "React and Redux",
+      description: "Best of two worlds",
+      status: "Unstarted"
+    }
+  ]
+};
+
+const store = createStore(taskReducer, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
