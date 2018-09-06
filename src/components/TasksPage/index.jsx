@@ -60,6 +60,7 @@ class TasksPage extends Component {
   };
 
   render() {
+    console.log("TasksPage component");
     return (
       <div className="tasks">
         <div className="tasks-header">

@@ -2,6 +2,7 @@ import React from "react";
 import Task from "../Task";
 
 const TaskList = props => {
+  console.log("TaskList component");
   return (
     <div className="task-list">
       <div className="task-list-title">

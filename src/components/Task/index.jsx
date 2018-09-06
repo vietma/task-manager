@@ -2,6 +2,7 @@ import React from "react";
 import { TASK_STATUSES } from "../../constants";
 
 const Task = props => {
+  console.log("Task component");
   return (
     <div className="task">
       <div className="task-header">
@@ -21,8 +22,6 @@ const Task = props => {
 
   function onStatusChange(e) {
     props.onStatusChange(props.task.id, e.target.value);
-    console.log("task id: ", props.task.id);
-    console.log("e.target.value: ", e.target.value);
   }
 };
 

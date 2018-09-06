@@ -7,6 +7,8 @@ import { createStore } from "redux";
 import tasks from "./reducers";
 import { Provider } from "react-redux";
 
+console.log("index.js - Redux Store");
+
 const store = createStore(tasks);
 
 ReactDOM.render(
