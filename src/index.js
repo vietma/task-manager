@@ -7,6 +7,7 @@ import { createStore } from "redux";
 import taskReducer from "./reducers/taskReducer";
 import { Provider } from "react-redux";
 import { uniqueId } from "./actions";
+import { devToolsEnhancer } from "redux-devtools-extension";
 
 console.log("index.js - Redux Store");
 
@@ -39,7 +40,7 @@ const initialState = {
   ]
 };
 
-const store = createStore(taskReducer, initialState);
+const store = createStore(taskReducer, initialState, devToolsEnhancer());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -17,7 +17,7 @@ export function createTask({ title, description }) {
 }
 
 // export function editTask(id, params = {}) {
-export function editTask(id, status) {
+export function editTask(id, status = {}) {
   console.log("Action Creator - editTask");
   return {
     type: "EDIT_TASK",
