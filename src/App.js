@@ -3,9 +3,13 @@ import TasksPage from "./components/TasksPage";
 /* import logo from './logo.svg';
 import './App.css'; */
 import { connect } from "react-redux";
-import { createTask, editTask } from "./actions";
+import { createTask, editTask, fetchTasks } from "./actions";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchTasks());
+  }
+
   onCreateTask = ({ title, description }) => {
     this.props.dispatch(createTask({ title, description }));
   };
@@ -16,7 +20,7 @@ class App extends Component {
 
   render() {
     // console.log("props from App ", this.props);
-    console.log("App component");
+    // console.log("App component");
     return (
       <div className="main-content">
         <TasksPage

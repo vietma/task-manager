@@ -13,32 +13,7 @@ import thunk from "redux-thunk";
 console.log("index.js - Redux Store");
 
 const initialState = {
-  tasks: [
-    {
-      id: uniqueId(),
-      title: "Learn Redux",
-      description: "The store, action and reducers",
-      status: "In Progress"
-    },
-    {
-      id: uniqueId(),
-      title: "Peace on Earth",
-      description: "No big deal",
-      status: "Unstarted"
-    },
-    {
-      id: uniqueId(),
-      title: "Redux in Action",
-      description: "The best Redux book",
-      status: "Completed"
-    },
-    {
-      id: uniqueId(),
-      title: "React and Redux",
-      description: "Best of two worlds",
-      status: "Unstarted"
-    }
-  ]
+  tasks: []
 };
 
 const store = createStore(

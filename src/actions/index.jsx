@@ -1,3 +1,5 @@
+import axios from "axios";
+
 let _id = 1;
 export function uniqueId() {
   return _id++;
@@ -26,5 +28,20 @@ export function editTask(id, status = {}) {
       // params
       status
     }
+  };
+}
+
+export function fetchTasks() {
+  return dispatch => {
+    axios.get("http://localhost:3001/tasks").then(response => {
+      dispatch(fetchTasksSucceeded(response.data));
+    });
+  };
+}
+
+export function fetchTasksSucceeded(tasks) {
+  return {
+    type: "FETCH_TASKS_SUCCEEDED",
+    payload: { tasks }
   };
 }
