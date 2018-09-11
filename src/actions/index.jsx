@@ -1,4 +1,4 @@
-import axios from "axios";
+import * as api from "../api";
 
 let _id = 1;
 export function uniqueId() {
@@ -31,15 +31,21 @@ export function editTask(id, status = {}) {
   };
 }
 
+/* export function editTask(id, params={}){
+  return dispatch => {
+    api.editTask()
+  }
+} */
+
 export function fetchTasks() {
   return dispatch => {
-    axios.get("http://localhost:3001/tasks").then(response => {
+    api.fetchTasks().then(response => {
       dispatch(fetchTasksSucceeded(response.data));
     });
   };
 }
 
-export function fetchTasksSucceeded(tasks) {
+function fetchTasksSucceeded(tasks) {
   return {
     type: "FETCH_TASKS_SUCCEEDED",
     payload: { tasks }
