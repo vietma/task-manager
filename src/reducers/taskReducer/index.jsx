@@ -1,27 +1,49 @@
 export default function taskReducer(state, action) {
   console.log("Reducers - tasks");
   switch (action.type) {
-    case "CREATE_TASK": {
+    case "CREATE_TASK_SUCCEEDED": {
       console.log("Reducers - CREATE_TASK");
-      return { tasks: state.tasks.concat(action.payload) };
+      const { payload } = action;
+      return {
+        ...state,
+        tasks: state.tasks.concat(payload.task)
+      };
     }
 
-    case "EDIT_TASK": {
+    case "EDIT_TASK_SUCCEEDED": {
       console.log("Reducers - EDIT_TASK");
-      // const { payload } = action;
-      const payload = action.payload;
+      const { payload } = action;
       return {
+        ...state,
         tasks: state.tasks.map(task => {
-          if (task.id === payload.id) {
-            // return Object.assign({}, task, payload.params);
-            return Object.assign(task, payload.status);
+          if (task.id === payload.task.id) {
+            return payload.task;
           }
           return task;
         })
       };
     }
     case "FETCH_TASKS_SUCCEEDED": {
-      return { tasks: action.payload.tasks };
+      return {
+        ...state,
+        tasks: action.payload.tasks,
+        isLoading: false
+      };
+    }
+
+    case "FETCH_TASKS_STARTED": {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+
+    case "FETCH_TASKS_FAILED": {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error
+      };
     }
 
     default: {

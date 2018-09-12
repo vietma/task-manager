@@ -17,6 +17,24 @@
       "title": "Create Facebook for dogs",
       "description": "The hottest new social network",
       "status": "Completed"
+    },
+    {
+      "title": "Async actions are so good",
+      "description": "Just learn",
+      "status": "In Progress",
+      "id": 4
+    },
+    {
+      "title": "JavaScript is good",
+      "description": "JS is great",
+      "status": "Completed",
+      "id": 5
+    },
+    {
+      "title": "Redux Store",
+      "description": "Store is powerful",
+      "status": "In Progress",
+      "id": 6
     }
   ]
 }

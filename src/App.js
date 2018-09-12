@@ -20,21 +20,28 @@ class App extends Component {
 
   render() {
     // console.log("props from App ", this.props);
-    // console.log("App component");
     return (
-      <div className="main-content">
-        <TasksPage
-          tasks={this.props.tasks}
-          onCreateTask={this.onCreateTask}
-          onStatusChange={this.onStatusChange}
-        />
+      <div className="container">
+        {this.props.error}
+        <div className="main-content">
+          <TasksPage
+            tasks={this.props.tasks}
+            onCreateTask={this.onCreateTask}
+            onStatusChange={this.onStatusChange}
+            isLoading={this.props.isLoading}
+          />
+        </div>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { tasks: state.tasks };
+  return {
+    tasks: state.tasks,
+    isLoading: state.isLoading,
+    error: state.error
+  };
 }
 
 export default connect(mapStateToProps)(App);
