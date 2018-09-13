@@ -51,7 +51,9 @@ export function fetchTasks() {
     api
       .fetchTasks()
       .then(response => {
-        dispatch(fetchTasksSucceeded(response.data));
+        setTimeout(() => {
+          dispatch(fetchTasksSucceeded(response.data));
+        }, 3000);
       })
       .catch(error => {
         dispatch(fetchTasksFailed(error.message));

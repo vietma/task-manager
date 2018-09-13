@@ -13,7 +13,8 @@ import thunk from "redux-thunk";
 console.log("index.js - Redux Store");
 
 const initialState = {
-  tasks: []
+  tasks: [],
+  isLoading: false
 };
 
 const store = createStore(
