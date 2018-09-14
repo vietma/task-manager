@@ -14,7 +14,8 @@ console.log("index.js - Redux Store");
 
 const initialState = {
   tasks: [],
-  isLoading: false
+  isLoading: false,
+  error: null
 };
 
 const store = createStore(

@@ -63,6 +63,16 @@ class TasksPage extends Component {
     console.log("TasksPage component");
     if (this.props.isLoading) {
       return <div className="tasks-loading">Loading...</div>;
+      /* return (
+        <React.Fragment>
+          <div className="loading-meta">Loading</div>
+          <div className="loading">
+            <span className="dot" />
+            <span className="dot" />
+            <span className="dot" />
+          </div>
+        </React.Fragment>
+      ); */
     }
 
     return (

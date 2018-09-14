@@ -4,6 +4,7 @@ import TasksPage from "./components/TasksPage";
 import './App.css'; */
 import { connect } from "react-redux";
 import { createTask, editTask, fetchTasks } from "./actions";
+import FlashMessage from "./components/FlashMessage";
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class App extends Component {
     // console.log("props from App ", this.props);
     return (
       <div className="container">
-        {this.props.error}
+        {this.props.error && <FlashMessage message={this.props.error} />}
         <div className="main-content">
           <TasksPage
             tasks={this.props.tasks}
