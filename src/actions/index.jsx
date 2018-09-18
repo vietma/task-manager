@@ -85,3 +85,12 @@ function fetchTasksFailed(error) {
     }
   };
 }
+
+export function filterTasks(searchTerm) {
+  return {
+    type: "FILTER_TASKS",
+    payload: {
+      searchTerm
+    }
+  };
+}

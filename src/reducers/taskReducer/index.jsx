@@ -1,3 +1,6 @@
+import { createSelector } from "reselect";
+import { TASK_STATUSES } from "../../constants";
+
 export default function taskReducer(state, action) {
   console.log("Reducers - tasks");
   switch (action.type) {
@@ -46,8 +49,37 @@ export default function taskReducer(state, action) {
       };
     }
 
+    case "FILTER_TASKS": {
+      return {
+        ...state,
+        isLoading: false,
+        searchTerm: action.payload.searchTerm
+      };
+    }
+
     default: {
       return state;
     }
   }
 }
+
+const getTasks = state => state.tasks;
+const getSearchTerm = state => state.searchTerm;
+
+export const getFilteredTasks = createSelector(
+  [getTasks, getSearchTerm],
+  (tasks, searchTerm) => {
+    return tasks.filter(task => task.title.match(new RegExp(searchTerm, "i")));
+  }
+);
+
+export const getGroupedAndFilteredTasks = createSelector(
+  [getFilteredTasks],
+  tasks => {
+    const grouped = {};
+    TASK_STATUSES.forEach(status => {
+      grouped[status] = tasks.filter(task => task.status === status);
+    });
+    return grouped;
+  }
+);

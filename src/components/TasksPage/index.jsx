@@ -15,15 +15,13 @@ class TasksPage extends Component {
   }
 
   renderTaskLists() {
-    return TASK_STATUSES.map(status => {
-      const statusTasks = this.props.tasks.filter(
-        task => task.status === status
-      );
+    return Object.keys(this.props.tasks).map(status => {
+      const tasksByStatus = this.props.tasks[status];
       return (
         <TaskList
           key={status}
           status={status}
-          tasks={statusTasks}
+          tasks={tasksByStatus}
           onStatusChange={this.props.onStatusChange}
         />
       );
@@ -59,6 +57,10 @@ class TasksPage extends Component {
     this.setState({ description: e.target.value });
   };
 
+  onSearch = e => {
+    this.props.onSearch(e.target.value);
+  };
+
   render() {
     console.log("TasksPage component");
     if (this.props.isLoading) {
@@ -78,6 +80,7 @@ class TasksPage extends Component {
     return (
       <div className="tasks">
         <div className="tasks-header">
+          <input type="text" placeholder="Search..." onChange={this.onSearch} />
           <button className="button button-default" onClick={this.toggleForm}>
             + New Task
           </button>
